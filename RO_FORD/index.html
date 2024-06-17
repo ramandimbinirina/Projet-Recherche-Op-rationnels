@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Ford </title>
+    <link rel="stylesheet" href="materialize/materialize.min.css">    
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+     <link href="css/font-awesome.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/go.js"></script>
+    <script src="js/config.js"></script>
+    <script src=".js/jquery.min.js"></script>
+    <script src="./script.js"></script>
+</head>
+
+<body onload="init()">
+    <div class="row">
+        <div class="col s8" id="mainInfo">
+            <div id="diagramDiv" style="height: 100vh;"></div>
+        </div>
+        <div class="col s4" id="rightInfo">
+            <div class="row">
+                <div class="col s6">
+                    <form>
+                        <select name="ford" id="fordSelect" style="display: inline;">
+                            <option value="Max">MAX</option>
+                            <option value="Min">MIN</option>
+                        </select>
+                    </form>
+                </div>
+                <div class="col s6">
+                    <button id="resetBtn" class="btn waves-effect waves-light grey darken-3">
+                        <i class="fa fa-refresh"></i>
+                    </button>
+                    <button id="launchBtn" class="btn waves-effect waves-light grey darken-3">
+                        <i class="fa fa-play"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="row">
+                <table id="tableTrace" class="centered highlight">
+                    <thead style="color: white; background-color: rgb(129, 79, 14);">
+                        <tr>
+                            <th>i</th>
+                            <th>j</th>
+                            <th>λj - λi</th>
+                            <th>V(Xi,Xj)</th> 
+                            <th>λj</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    <script src="materialize/materialize.min.js"></script>
+    </div>
+    
+</body>
+
+</html>
