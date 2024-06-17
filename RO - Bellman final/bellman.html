@@ -1,0 +1,170 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title>RO CHO BELLMAN KALABA</title>
+<link href="css/bootstrap.min.css" rel="stylesheet" type="text/css">
+<link href="css/bootstrap-responsive.css" rel="stylesheet" type="text/css">
+<link href="css/css.css" rel="stylesheet" type="text/css">
+</head>
+<body style="background-color: rgb(3, 4, 72);">
+	<nav class="navbar navbar-expand-lg bg-body-tertiary" style="background-color:#e3f2fd;padding-top: 1px;">
+		<div class="container-fluid">
+			<h4 style="text-align: center;">Représentation Graphique - Chemin de valeur optimale de l'Algorithme de BELLMAN KALABA</h4>
+		</div>
+		<div style="margin-left: 110px; display: flex; justify-content: center;" >
+			<button id="drag" >Positionner un sommet</button>
+			<button id="item">Ajouter un sommet </button>
+			<button id="delete">Supprimer</button>
+			<button id="update">Mettre à jour</button>
+			<button id="debut">Définr un début</button>
+			<button id="fin">Définir un fin</button>
+			<button id="rafraichir">Rafraichir</button>
+			<button id="chercher">Chemin maximal</button>
+			<button id="chercherMin">Chemin minimal</button>
+		</div>
+		<br>
+	</nav>
+
+	<div style="display: flex;">
+		<div >
+			 <div style="margin-left: 15%; margin-top: 1%;">
+				<div class="row custom-row-width">
+					<div class="col s12" id="rightInfo"> 	
+						<p>Tableau récapitulatif du solution obtenue :</p>					
+						<div class="row" >
+							<table id="tableTrace" class="centered highlight">
+								<thead style="color: white; background-color: rgb(3, 4, 72);">
+									<tr>
+										
+										<th>X <sub>i</sub></th>
+										<th>X <sub>j</sub></th>
+										<th>V(i,j)</th> 
+										<th>V <sub>i</sub>(k)</th>
+										<th>V <sub>i</sub>(k) Res</th>
+									</tr>
+								</thead>
+								<tbody>
+									
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>	
+		<div  class="container-fluid">		
+			<canvas id="canvas" width="780px" height="475px" style="background: white;margin-left: 13%; border-radius: 8px;"></canvas>
+		</div>
+	</div>
+	
+
+
+	
+	<script>
+	window.onload = function() {
+		var liens = new ConteneurLiens();
+
+		var canvas = document.getElementById("canvas");
+
+		var dragButton = document.getElementById("drag");
+		var itemButton = document.getElementById("item");
+		var updateButton = document.getElementById("update");
+		var deleteButton = document.getElementById("delete");
+		var debutButton = document.getElementById("debut");
+		var finButton = document.getElementById("fin");
+		var rafraichirButton =document.getElementById("rafraichir");
+		var chercherBouton = document.getElementById("chercher");
+		var chercherMin = document.getElementById("chercherMin");
+		var gs = new Scene(canvas);
+                
+                /*var timer = new Timer({
+                    onTimeout : function() {
+                        dragButton.style.left = parseInt(dragButton.style.left) + 1 + "px";
+                    }
+                });
+                timer.start();
+                timer.play(false);*/
+
+		gs.paint();
+
+		var viewManager = new ViewManager(gs, liens);
+
+		function getMousePosition(element, event) {
+			return {
+				x : event.clientX - element.offsetLeft,
+				y : event.clientY - element.offsetTop
+			};
+		}
+
+		canvas.addEventListener('mousedown', function(event) {
+			viewManager.onMouseDown(getMousePosition(canvas, event));
+		});
+
+		canvas.addEventListener('mousemove', function(event) {
+			viewManager.onMouseMove(getMousePosition(canvas, event));
+		});
+
+		canvas.addEventListener('mouseup', function(event) {
+			viewManager.onMouseUp(getMousePosition(canvas, event));
+		});
+
+		canvas.addEventListener('click', function(event) {
+			viewManager.onClick(getMousePosition(canvas, event));
+		});
+
+		canvas.addEventListener('dblclick', function(event) {
+			viewManager.onDblClick(getMousePosition(canvas, event));
+		});
+		rafraichirButton.addEventListener('click', function(event){
+			viewManager.reset();
+		 });
+
+		chercherBouton.addEventListener('click', function(event) {
+                    liens.setIsMin(false);
+                    liens.setView(viewManager);
+                    liens.mainMax();
+		});
+		chercherMin.addEventListener('click', function(event) {
+                    liens.setIsMin(true);
+                    liens.setView(viewManager);
+                    liens.mainMin();
+		});
+
+		dragButton.addEventListener('click', function(event) {
+			viewManager.mode = "drag";
+		});
+
+		itemButton.addEventListener('click', function(event) {
+			viewManager.mode = "item";
+		});
+
+		updateButton.addEventListener('click', function(event) {
+			viewManager.mode = "update";
+		});
+
+		deleteButton.addEventListener('click', function(event) {
+			viewManager.mode = "delete";
+		});
+
+		debutButton.addEventListener('click', function(event) {
+			viewManager.mode = "debut";
+			
+		});
+		
+		finButton.addEventListener('click', function(event) {
+			viewManager.mode = "fin";
+		});
+		 
+	}
+	</script>
+  </body>
+  <script type="text/javascript" src="js/link2.js"></script>
+    <script type="text/javascript" src="js/llp.js"></script>
+	<script type="text/javascript" src="js/link1.js"></script>
+	<script type="text/javascript" src="js/teth.js"></script>
+	<script type="text/javascript" src="js/ora.js"></script>
+	<script type="text/javascript" src="js/pointSomm.js"></script>
+	<script type="text/javascript" src="js/managerLink.js"></script>
+    <script type="text/javascript" src="js/link.js"></script>
+</html>

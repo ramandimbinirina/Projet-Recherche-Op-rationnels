@@ -1,0 +1,57 @@
+@charset "utf-8";
+/* CSS Document */
+.fonty{
+	font-family:alex-brush;	
+}
+
+
+#rightInfo {
+	height: 65vh;
+	background-color: white;
+	padding: 40px; 
+	width: 90%; 
+    border-radius: 8px;
+    overflow-y: scroll;
+}
+
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+
+}
+button{
+    background-color: rgb(3, 4, 72); 
+    color: white;
+    border-radius: 5px;
+    height: 35px;
+    margin-left: 10px; 
+}
+
+button:hover {
+    color: rgb(3, 4, 72);
+    background-color: white;
+  }
+  
+
+th {
+	padding: 8px;
+	border: 1px solid #ddd;
+}
+
+
+td {
+	padding: 8px;
+	border: 1px solid #ddd;
+}
+
+.custom-row-width {
+    width: 465px;
+    border-radius: 8px;
+}
+#tableTrace{
+    text-align: center;
+}
+
+
